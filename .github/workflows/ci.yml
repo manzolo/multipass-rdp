@@ -11,6 +11,7 @@ jobs:
       - name: Install project dependencies
         shell: bash
         run: |
+          brew update
           brew install --cask multipass
           hash -r
       - name: Wait for multipass to be up
