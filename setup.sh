@@ -35,11 +35,14 @@ run_command_on_vm "$VM_NAME" "${VM_INSTALL_PATH}/script/_configure.sh ${VM_INSTA
 #sleep 10
 #multipass restart $VM_NAME
 #sleep 10
+msg_warn "Installing add-ons"
+run_command_on_vm "$VM_NAME" "${VM_INSTALL_PATH}/script/_addons.sh ${VM_INSTALL_PATH}"
+
 run_command_on_vm "$VM_NAME" "sudo useradd -s /bin/bash -d /home/${USERNAME}/ -m -p `perl -e 'print crypt($ARGV[0], "password")' \`echo ${PASSWORD}\`` ${USERNAME}"
 
-msg_info "[Task 2]"
+msg_info "[Task 3]"
 msg_warn "Start $VM_NAME"
 ${HOST_DIR_NAME}/start.sh
 
-msg_info "[Task 3]"
+msg_info "[Task 4]"
 msg_warn "On task complete"
